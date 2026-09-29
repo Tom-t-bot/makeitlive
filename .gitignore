@@ -1,0 +1,5 @@
+.DS_Store
+.vercel
+# Internal source material — not for the public repo
+*.pdf
+574fa636-*.jpg
