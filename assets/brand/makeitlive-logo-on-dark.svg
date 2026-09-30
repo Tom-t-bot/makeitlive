@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="193 221 1225 325" role="img" aria-label="Make It Live — for dark backgrounds">
+  <title>Make It Live — for dark backgrounds</title>
+  <defs><clipPath id="c"><rect x="180" y="221" width="800" height="79"/></clipPath></defs>
+  <g clip-path="url(#c)" fill="none" stroke="#F2F1EE" stroke-width="8">
+    <path d="M197.5 300V221M197.5 215L241 285L286 215M286 221V306"/>
+    <path d="M357.7 306L402.5 212L446.8 306M370 280.5H435"/>
+    <path d="M518.5 215V306M589 215L520 265.5M537.5 252.3L589 306"/>
+    <path d="M650 215V306M646 225H710M646 260H706M646 296H710"/>
+    <path d="M829 215V306"/>
+    <path d="M892 225H961M926 215V306"/>
+  </g>
+  <rect x="1004" y="288" width="414" height="12" fill="#0074FF"/>
+  <g fill="#F2F1EE">
+    <path d="M196 349H251V507H442V546H196Z"/>
+    <rect x="546" y="349" width="55" height="197"/>
+    <path d="M673 349H742L914 546H845Z"/>
+    <path d="M1012 349H1075L937 514L902 475Z"/>
+    <path d="M1140 349H1415V384H1195V427H1373V462H1195V506H1415V546H1140Z"/>
+  </g>
+</svg>

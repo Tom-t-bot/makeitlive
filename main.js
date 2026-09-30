@@ -1,7 +1,7 @@
 (function () {
   var root = document.documentElement;
 
-  var titles = {
+  var titles = window.MIL_TITLES || {
     nl: 'Make It Live — Eventbureau',
     en: 'Make It Live — Event agency'
   };
@@ -61,7 +61,18 @@
         btn.classList.add('done');
         setTimeout(function () { btn.classList.remove('done'); }, 1800);
       };
-      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
+      var fallback = function () {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { if (document.execCommand('copy')) done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback);
+      else fallback();
     });
   });
 
