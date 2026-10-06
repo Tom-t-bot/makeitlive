@@ -23,7 +23,8 @@
         var saved = localStorage.getItem('mil-lang');
         if (saved === 'nl' || saved === 'en') lang = saved;
         else if (!/^nl\b/i.test(navigator.language || '')) lang = 'en';
-        if (localStorage.getItem('mil-theme') === 'dark') theme = 'dark';
+        if (sessionStorage.getItem('mil-theme') === 'dark') theme = 'dark';
+        localStorage.removeItem('mil-theme');
         if (localStorage.getItem('mil-notes') === 'off') root.classList.add('hide-notes');
       } catch (e) {}
       root.lang = lang;

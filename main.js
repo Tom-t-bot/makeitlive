@@ -27,7 +27,7 @@
     btn.addEventListener('click', function () {
       var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
-      try { localStorage.setItem('mil-theme', next); } catch (e) {}
+      try { sessionStorage.setItem('mil-theme', next); } catch (e) {}
       paintThemeColor();
     });
   });
