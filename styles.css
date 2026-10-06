@@ -502,6 +502,11 @@ html:not([data-theme="dark"]) .core-card .core-n { color: rgba(23, 22, 26, 0.6);
 .core-card p { margin: 0; max-width: 34ch; font-size: 15px; font-weight: 400; color: var(--ink-2); }
 html:not([data-theme="dark"]) .core-card p { color: rgba(23, 22, 26, 0.78); }
 
+/* Preview-only link layer on the service cards */
+.core-link { position: absolute; inset: 0; z-index: 2; }
+.core-link span { position: absolute; right: 22px; bottom: 22px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--bg); transition: transform 0.4s var(--ease); }
+.core-link:hover span { transform: translateX(4px); }
+
 /* Services — full event support */
 .support {
   margin-top: 16px; padding: clamp(28px, 4vw, 48px);

@@ -120,6 +120,36 @@
     }).catch(function () {});
   }
 
+  // ── Placeholder pages: team notes / visitor view ──
+  document.querySelectorAll('[data-notes-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var off = root.classList.toggle('hide-notes');
+      try { localStorage.setItem('mil-notes', off ? 'off' : 'on'); } catch (e) {}
+    });
+  });
+
+  // ── Pre-select a service in the form via ?service=DJ ──
+  var wanted = new URLSearchParams(location.search).get('service');
+  if (wanted) {
+    document.querySelectorAll('#contact-form [name="services"]').forEach(function (cb) {
+      if (cb.value === wanted) cb.checked = true;
+    });
+  }
+
+  // ── Preview only: make the five service cards open their (unlisted) pages ──
+  if (root.classList.contains('show-drafts')) {
+    var pages = ['/dj', '/live-musicians', '/live-bands', '/performers', '/photo-video'];
+    document.querySelectorAll('.core-card').forEach(function (card, i) {
+      if (!pages[i]) return;
+      var a = document.createElement('a');
+      a.className = 'core-link';
+      a.href = pages[i];
+      a.setAttribute('aria-label', (card.querySelector('h3') || {}).textContent || 'Open');
+      a.innerHTML = '<span aria-hidden="true">→</span>';
+      card.appendChild(a);
+    });
+  }
+
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
 

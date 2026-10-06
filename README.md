@@ -68,6 +68,22 @@ footer or sitemap, and it is `noindex, nofollow` (meta tag + `X-Robots-Tag` head
 engines skip it. Share the URL directly with candidates. `/brand-kit` and `/partials/*` are treated the same way.
 Unlisted is not private: anyone with the link can open it.
 
+## Service pages (wireframes)
+
+Each of the five service cards has an unlisted placeholder page built from dashed *content slots*:
+`/dj`, `/live-musicians`, `/live-bands`, `/performers`, `/photo-video` (`dj.html`, … , `pages.css`).
+They are `noindex` and not linked from the public site. Opening `/?preview` adds a link layer to the five cards
+so the team can click through.
+
+- Every slot says what content goes there and which question to answer; the box at the top of each page lists
+  *what matters on this page*. The yellow bar toggles **Team notes** ⇄ **Visitor view** (the latter shows only a
+  calm "Setting the stage").
+- Fill a slot by replacing the whole `<div class="slot …">…</div>` with the real image/video/text.
+- To publish a page: replace its slots, remove the yellow `.pg-bar`, then (1) delete `.core-link` generation in
+  `main.js` (preview block) and instead wrap the card in `<a href="/dj">`, and (2) drop its path from the
+  `noindex` rule in `vercel.json`.
+- The contact CTA on each page opens the form with that service pre-selected (`/?service=DJ#contact`).
+
 ## Brand kit
 
 `/brand-kit` is a partner-facing page (`brand-kit.html`, `brand-kit.css`). The downloadable logo files in
