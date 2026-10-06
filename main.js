@@ -145,7 +145,6 @@
       a.className = 'core-link';
       a.href = pages[i];
       a.setAttribute('aria-label', (card.querySelector('h3') || {}).textContent || 'Open');
-      a.innerHTML = '<span aria-hidden="true">→</span>';
       card.appendChild(a);
     });
   }
