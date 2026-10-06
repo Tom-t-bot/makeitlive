@@ -544,6 +544,9 @@ html:not([data-theme="dark"]) .core-card p { color: rgba(23, 22, 26, 0.78); }
 .quote blockquote::before { content: "“"; display: block; font-size: 64px; line-height: 0.6; color: var(--accent); margin-bottom: 8px; }
 .quote figcaption { font-size: 12px; font-weight: 500; font-stretch: 125%; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
 
+/* Join page (unlisted) */
+.join-page { padding-top: clamp(140px, 18vw, 210px); padding-bottom: clamp(80px, 12vw, 140px); }
+
 /* Join — tracks */
 .tracks {
   margin-top: clamp(48px, 7vw, 80px);

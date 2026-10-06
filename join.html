@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Open posities — Make It Live</title>
+  <meta name="description" content="Open posities bij Make It Live. / Open positions at Make It Live.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f6f2ec">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script>
+    window.MIL_TITLES = { nl: 'Open posities — Make It Live', en: 'Open positions — Make It Live' };
+    (function () {
+      var lang = 'nl', theme = 'light', root = document.documentElement;
+      try {
+        var saved = localStorage.getItem('mil-lang');
+        if (saved === 'nl' || saved === 'en') lang = saved;
+        else if (!/^nl\b/i.test(navigator.language || '')) lang = 'en';
+        if (localStorage.getItem('mil-theme') === 'dark') theme = 'dark';
+      } catch (e) {}
+      root.lang = lang;
+      root.dataset.theme = theme;
+      root.classList.add('js');
+    })();
+  </script>
+</head>
+<body class="no-hero-logo">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="spot" aria-hidden="true"></div>
+
+  <header class="nav scrolled">
+    <a class="nav-mark" href="/" aria-label="Make It Live — home">
+      <span class="nav-mark-text">MAKE IT LIVE</span><span class="nav-mark-bar"></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/"><span data-l="nl">← Naar de site</span><span data-l="en">← To the site</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set-lang="nl">NL</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" data-set-lang="en">EN</button>
+    </div>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- JOIN -->
+    <section class="section join join-page" id="join">
+      <p class="eyebrow reveal"><span class="idx">—</span> <span data-l="nl">Open posities</span><span data-l="en">Open positions</span></p>
+      <h2 class="statement reveal">
+        <span data-l="nl">We bouwen het team <em>achter</em> de show.</span>
+        <span data-l="en">We're building the crew <em>behind</em> the show.</span>
+      </h2>
+      <p class="lede reveal">
+        <span data-l="nl">Drie manieren om erbij te horen. Kies wat bij je past.</span>
+        <span data-l="en">Three ways in. Pick the one that fits you.</span>
+      </p>
+
+      <div class="tracks">
+        <article class="track reveal">
+          <p class="track-k">Make It Live</p>
+          <h3>Artist</h3>
+          <p data-l="nl">Je wordt geboekt voor events.</p>
+          <p data-l="en">You get booked for events.</p>
+          <p class="track-pay"><span data-l="nl">Vergoeding per booking</span><span data-l="en">Paid per booking</span></p>
+          <a class="track-cta" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Artist"><span data-l="nl">Stuur je werk</span><span data-l="en">Send your work</span> <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="track reveal">
+          <p class="track-k">Make It Live</p>
+          <h3>Ambassador</h3>
+          <p data-l="nl">Je brengt klanten en leads aan en helpt Make It Live bekend te maken.</p>
+          <p data-l="en">You bring in clients and leads and help put Make It Live on the map.</p>
+          <p class="track-pay"><span data-l="nl">Booking fee + commissie op aangebrachte klanten</span><span data-l="en">Booking fee + commission on clients you bring in</span></p>
+          <a class="track-cta" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Ambassador"><span data-l="nl">Word ambassador</span><span data-l="en">Become an ambassador</span> <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="track track-core reveal">
+          <p class="track-k">Make It Live</p>
+          <h3>Core Team</h3>
+          <p data-l="nl">Je neemt een specifieke verantwoordelijkheid op binnen het bedrijf.</p>
+          <p data-l="en">You own a specific responsibility within the company.</p>
+          <p class="track-pay"><span data-l="nl">Vergoeding voor je werk + sales/booking commissie</span><span data-l="en">Paid for your work + sales/booking commission</span></p>
+          <a class="track-cta" href="#roles"><span data-l="nl">Bekijk de rollen</span><span data-l="en">See the roles</span> <span aria-hidden="true">↓</span></a>
+        </article>
+      </div>
+
+      <h3 class="roles-title reveal" id="roles"><span data-l="nl">Rollen binnen het core team</span><span data-l="en">Core team roles</span></h3>
+
+      <div class="roles">
+        <details class="role reveal">
+          <summary><span class="n">01</span><span class="role-name">Creative Lead</span><span class="role-plus" aria-hidden="true"></span></summary>
+          <div class="role-body">
+            <p data-l="nl">Voor iemand die graag bezig is met muziek, entertainment en nieuwe ideeën. Je denkt mee over:</p>
+            <p data-l="en">For someone who lives for music, entertainment and new ideas. You'll help shape:</p>
+            <ul data-l="nl"><li>Nieuwe entertainmentconcepten</li><li>Shows en formats</li><li>Artiesten en acts</li><li>Muzikale invulling van events</li><li>Nieuwe trends</li><li>Creatieve ideeën voor klanten</li><li>De creatieve uitstraling van Make It Live</li></ul>
+            <ul data-l="en"><li>New entertainment concepts</li><li>Shows and formats</li><li>Artists and acts</li><li>The musical direction of events</li><li>New trends</li><li>Creative ideas for clients</li><li>The creative identity of Make It Live</li></ul>
+            <a class="apply" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Creative%20Lead"><span data-l="nl">Solliciteer</span><span data-l="en">Apply</span> →</a>
+          </div>
+        </details>
+
+        <details class="role reveal">
+          <summary><span class="n">02</span><span class="role-name">Commercial / Sales Lead</span><span class="role-plus" aria-hidden="true"></span></summary>
+          <div class="role-body">
+            <p data-l="nl">Je helpt met:</p>
+            <p data-l="en">You'll help with:</p>
+            <ul data-l="nl"><li>Nieuwe klanten zoeken</li><li>Leads opvolgen</li><li>Bedrijven contacteren</li><li>Wedding planners en venues benaderen</li><li>Offertes opvolgen</li><li>Nieuwe bookings binnenhalen</li><li>Bestaande klanten verder uitbouwen</li></ul>
+            <ul data-l="en"><li>Finding new clients</li><li>Following up on leads</li><li>Reaching out to companies</li><li>Approaching wedding planners and venues</li><li>Following up on quotes</li><li>Landing new bookings</li><li>Growing existing clients</li></ul>
+            <a class="apply" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Commercial%20%2F%20Sales%20Lead"><span data-l="nl">Solliciteer</span><span data-l="en">Apply</span> →</a>
+          </div>
+        </details>
+
+        <details class="role reveal">
+          <summary><span class="n">03</span><span class="role-name">Business Development</span><span class="role-plus" aria-hidden="true"></span></summary>
+          <div class="role-body">
+            <p data-l="nl">Nieuwe deuren openen, bijvoorbeeld bij:</p>
+            <p data-l="en">Opening new doors, for example with:</p>
+            <ul data-l="nl"><li>Nieuwe venues</li><li>Hotels</li><li>Wedding planners</li><li>Event agencies</li><li>Corporate klanten</li><li>Festivals</li><li>Horeca</li><li>Nieuwe leveranciers</li><li>Strategische samenwerkingen</li></ul>
+            <ul data-l="en"><li>New venues</li><li>Hotels</li><li>Wedding planners</li><li>Event agencies</li><li>Corporate clients</li><li>Festivals</li><li>Hospitality</li><li>New suppliers</li><li>Strategic partnerships</li></ul>
+            <a class="apply" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Business%20Development"><span data-l="nl">Solliciteer</span><span data-l="en">Apply</span> →</a>
+          </div>
+        </details>
+
+        <details class="role reveal">
+          <summary><span class="n">04</span><span class="role-name">Artist &amp; Talent Manager</span><span class="role-plus" aria-hidden="true"></span></summary>
+          <div class="role-body">
+            <p data-l="nl">Voor iemand die graag met artiesten werkt. Je helpt met:</p>
+            <p data-l="en">For someone who loves working with artists. You'll help with:</p>
+            <ul data-l="nl"><li>Artiesten zoeken</li><li>Nieuwe artiesten leren kennen</li><li>Artist roster uitbouwen</li><li>Beschikbaarheid</li><li>Artist fees</li><li>Kwaliteit</li><li>Briefings</li><li>Nieuwe acts samenstellen</li><li>Contact met artiesten</li></ul>
+            <ul data-l="en"><li>Scouting artists</li><li>Getting to know new talent</li><li>Building the artist roster</li><li>Availability</li><li>Artist fees</li><li>Quality</li><li>Briefings</li><li>Putting together new acts</li><li>Artist relations</li></ul>
+            <a class="apply" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Artist%20%26%20Talent%20Manager"><span data-l="nl">Solliciteer</span><span data-l="en">Apply</span> →</a>
+          </div>
+        </details>
+
+        <details class="role reveal">
+          <summary><span class="n">05</span><span class="role-name">Booking &amp; Event Coordinator</span><span class="role-plus" aria-hidden="true"></span></summary>
+          <div class="role-body">
+            <p data-l="nl">Voor iemand die graag organiseert. Je zorgt ervoor dat een geboekt event ook effectief goed verloopt:</p>
+            <p data-l="en">For the natural organiser. You make sure every booked event actually runs smoothly:</p>
+            <ul data-l="nl"><li>Planning</li><li>Timings</li><li>Artiesten</li><li>Riders</li><li>Venue</li><li>Soundcheck</li><li>Eventinformatie</li><li>Contact met klant en artiest</li><li>Event day coordination</li></ul>
+            <ul data-l="en"><li>Planning</li><li>Timings</li><li>Artists</li><li>Riders</li><li>Venue</li><li>Soundcheck</li><li>Event information</li><li>Client and artist contact</li><li>Event day coordination</li></ul>
+            <a class="apply" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Booking%20%26%20Event%20Coordinator"><span data-l="nl">Solliciteer</span><span data-l="en">Apply</span> →</a>
+          </div>
+        </details>
+
+        <details class="role reveal">
+          <summary><span class="n">06</span><span class="role-name">Production / Technical Lead</span><span class="role-plus" aria-hidden="true"></span></summary>
+          <div class="role-body">
+            <p data-l="nl">Voor iemand met interesse in techniek, sound en events. Je helpt met:</p>
+            <p data-l="en">For someone into tech, sound and events. You'll help with:</p>
+            <ul data-l="nl"><li>Sound</li><li>Lighting</li><li>DJ equipment</li><li>Technical riders</li><li>Technici</li><li>PA</li><li>Stage</li><li>Leveranciers</li><li>Transport</li><li>Opbouw &amp; afbraak</li><li>Technische planning</li></ul>
+            <ul data-l="en"><li>Sound</li><li>Lighting</li><li>DJ equipment</li><li>Technical riders</li><li>Technicians</li><li>PA</li><li>Stage</li><li>Suppliers</li><li>Transport</li><li>Build-up &amp; breakdown</li><li>Technical planning</li></ul>
+            <a class="apply" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Production%20%2F%20Technical%20Lead"><span data-l="nl">Solliciteer</span><span data-l="en">Apply</span> →</a>
+          </div>
+        </details>
+
+        <details class="role reveal">
+          <summary><span class="n">07</span><span class="role-name">Content &amp; Media Lead</span><span class="role-plus" aria-hidden="true"></span></summary>
+          <div class="role-body">
+            <p data-l="nl">Je helpt Make It Live zichtbaar te maken via:</p>
+            <p data-l="en">You'll make Make It Live visible through:</p>
+            <ul data-l="nl"><li>Eventfotografie</li><li>Videografie</li><li>Reels</li><li>Aftermovies</li><li>Behind the scenes</li><li>Artist content</li><li>Social media</li><li>Website content</li></ul>
+            <ul data-l="en"><li>Event photography</li><li>Videography</li><li>Reels</li><li>Aftermovies</li><li>Behind the scenes</li><li>Artist content</li><li>Social media</li><li>Website content</li></ul>
+            <a class="apply" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Content%20%26%20Media%20Lead"><span data-l="nl">Solliciteer</span><span data-l="en">Apply</span> →</a>
+          </div>
+        </details>
+
+        <details class="role reveal">
+          <summary><span class="n">08</span><span class="role-name">Event Experience Lead</span><span class="role-plus" aria-hidden="true"></span></summary>
+          <div class="role-body">
+            <p data-l="nl">Voor iemand die vooral nadenkt over de totaalbeleving. Je kijkt verder dan muziek:</p>
+            <p data-l="en">For someone who thinks in total experiences. You look beyond the music:</p>
+            <ul data-l="nl"><li>Entertainment</li><li>Lighting</li><li>Decoratie</li><li>Styling</li><li>Foto &amp; video</li><li>Special effects</li><li>Guest experience</li><li>Atmosfeer</li><li>Food &amp; hospitality</li></ul>
+            <ul data-l="en"><li>Entertainment</li><li>Lighting</li><li>Decoration</li><li>Styling</li><li>Photo &amp; video</li><li>Special effects</li><li>Guest experience</li><li>Atmosphere</li><li>Food &amp; hospitality</li></ul>
+            <a class="apply" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Event%20Experience%20Lead"><span data-l="nl">Solliciteer</span><span data-l="en">Apply</span> →</a>
+          </div>
+        </details>
+
+        <a class="role role-other reveal" href="mailto:hello@makeitlive.agency?subject=Make%20It%20Live%20%E2%80%94%20Open%20application">
+          <span class="n">09</span>
+          <span class="role-name"><span data-l="nl">Een andere rol in gedachten?</span><span data-l="en">Another role in mind?</span></span>
+          <span class="role-go"><span data-l="nl">Verras ons</span><span data-l="en">Surprise us</span> →</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>© <span data-year>2026</span> Make It Live</span>
+    <a href="/privacy">Privacy</a>
+    <span class="foot-stage">Join the crew<span class="blink">_</span></span>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

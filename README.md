@@ -61,6 +61,13 @@ The rolling reference banner and testimonials exist but are **not on the public 
 The quotes are sample copy and the reference names are unconfirmed. When you have real, approved ones, paste the
 two blocks into `index.html` between *WHO FOR* and *CONTACT* and delete the partial.
 
+## Unlisted pages
+
+`/join` (`join.html`) holds the open positions. Nothing on the site links to it: it is not in the navigation,
+footer or sitemap, and it is `noindex, nofollow` (meta tag + `X-Robots-Tag` header in `vercel.json`) so search
+engines skip it. Share the URL directly with candidates. `/brand-kit` and `/partials/*` are treated the same way.
+Unlisted is not private: anyone with the link can open it.
+
 ## Brand kit
 
 `/brand-kit` is a partner-facing page (`brand-kit.html`, `brand-kit.css`). The downloadable logo files in
