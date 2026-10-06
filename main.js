@@ -2,28 +2,64 @@
   var root = document.documentElement;
 
   var titles = window.MIL_TITLES || {
-    nl: 'Make It Live — Eventbureau',
-    en: 'Make It Live — Event agency'
+    nl: 'Make It Live — You bring the people. We Make It Live.',
+    en: 'Make It Live — You bring the people. We Make It Live.'
   };
 
+  // ── Language ────────────────────────────────
   function setLang(lang) {
     root.lang = lang;
     document.title = titles[lang];
     try { localStorage.setItem('mil-lang', lang); } catch (e) {}
   }
-
   document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
     btn.addEventListener('click', function () { setLang(btn.getAttribute('data-set-lang')); });
   });
   setLang(root.lang === 'en' ? 'en' : 'nl');
 
-  // Nav gets a backdrop (and the small wordmark) once the hero logo scrolls away.
+  // ── Theme (light by default) ────────────────
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  function paintThemeColor() {
+    if (themeMeta) themeMeta.setAttribute('content', root.dataset.theme === 'dark' ? '#050507' : '#f6f2ec');
+  }
+  paintThemeColor();
+  document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('mil-theme', next); } catch (e) {}
+      paintThemeColor();
+    });
+  });
+
+  // ── Nav: backdrop + small wordmark after the hero logo scrolls away ──
   var nav = document.querySelector('.nav');
+  var hero = document.getElementById('hero');
   function onScroll() { nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.55); }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Scroll reveal.
+  // ── Hero video: fades in by itself once assets/video/hero.* exists ──
+  var vid = hero && hero.querySelector('.hero-video');
+  if (vid) {
+    var conn = navigator.connection || {};
+    var skip = window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+               conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+    if (skip) {
+      vid.remove();
+    } else {
+      vid.addEventListener('playing', function () {
+        hero.classList.add('has-video');
+        nav.classList.add('on-video');
+      });
+      var sources = vid.querySelectorAll('source');
+      sources[sources.length - 1].addEventListener('error', function () { vid.remove(); });
+      var played = vid.play();
+      if (played && played.catch) played.catch(function () {});
+    }
+  }
+
+  // ── Scroll reveal ───────────────────────────
   var items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -41,7 +77,7 @@
     items.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // Soft blue spotlight that follows the cursor.
+  // ── Soft spotlight that follows the cursor ──
   var raf = 0, mx = 0, my = 0;
   window.addEventListener('pointermove', function (e) {
     mx = e.clientX; my = e.clientY;
@@ -53,7 +89,7 @@
     });
   }, { passive: true });
 
-  // Copy email.
+  // ── Copy buttons ────────────────────────────
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var text = btn.getAttribute('data-copy');
@@ -76,6 +112,93 @@
     });
   });
 
+  // ── Drafts (references, testimonials): only loaded with ?preview ──
+  var slot = document.getElementById('drafts-slot');
+  if (slot && root.classList.contains('show-drafts')) {
+    fetch('/partials/drafts.html').then(function (r) { return r.ok ? r.text() : ''; }).then(function (html) {
+      slot.innerHTML = html;
+    }).catch(function () {});
+  }
+
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
+
+  // ── Contact form ────────────────────────────
+  var form = document.getElementById('contact-form');
+  if (form) {
+    var status = document.getElementById('form-status');
+    var submit = form.querySelector('button[type="submit"]');
+    var T = {
+      nl: {
+        sending: 'Versturen…',
+        ok: 'Bedankt! We hebben je bericht ontvangen en nemen snel contact op.',
+        err: 'Het versturen lukte niet automatisch. Stuur je bericht rechtstreeks per mail: ',
+        link: 'open je mailprogramma'
+      },
+      en: {
+        sending: 'Sending…',
+        ok: 'Thank you! We received your message and will be in touch soon.',
+        err: "We couldn't send that automatically. Please send your message by email instead: ",
+        link: 'open your email app'
+      }
+    };
+
+    var buildMailto = function (d) {
+      var lines = [
+        'Name: ' + d.name,
+        'Email: ' + d.email,
+        'Event type: ' + d.type,
+        d.date ? 'Date: ' + d.date : '',
+        d.services.length ? 'Looking for: ' + d.services.join(', ') : '',
+        '',
+        d.message
+      ].filter(function (l, i) { return l !== '' || i > 3; });
+      return 'mailto:hello@makeitlive.agency?subject=' +
+        encodeURIComponent('Website — ' + d.type + ' — ' + d.name) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      var fd = new FormData(form);
+      var data = {
+        name: (fd.get('name') || '').toString().trim(),
+        email: (fd.get('email') || '').toString().trim(),
+        type: (fd.get('type') || '').toString(),
+        date: (fd.get('date') || '').toString(),
+        message: (fd.get('message') || '').toString().trim(),
+        services: fd.getAll('services').map(String),
+        website: (fd.get('website') || '').toString(),
+        lang: root.lang
+      };
+      var t = T[root.lang] || T.nl;
+
+      status.className = 'form-status';
+      status.textContent = t.sending;
+      submit.disabled = true;
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (res) {
+        if (!res.ok) throw new Error('http ' + res.status);
+        form.reset();
+        status.className = 'form-status ok';
+        status.textContent = t.ok;
+      }).catch(function () {
+        status.className = 'form-status err';
+        status.textContent = t.err;
+        var a = document.createElement('a');
+        a.href = buildMailto(data);
+        a.textContent = t.link;
+        status.appendChild(a);
+        status.appendChild(document.createTextNode('.'));
+      }).then(function () {
+        submit.disabled = false;
+      });
+    });
+  }
 })();

@@ -25,6 +25,7 @@
         else if (!/^nl\b/i.test(navigator.language || '')) lang = 'en';
       } catch (e) {}
       document.documentElement.lang = lang;
+      document.documentElement.dataset.theme = 'dark';
       document.documentElement.classList.add('js');
     })();
   </script>

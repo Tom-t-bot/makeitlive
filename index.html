@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Make It Live — Event agency</title>
-  <meta name="description" content="Make It Live is een Belgisch eventbureau dat de volledige beleving van je event verzorgt: entertainment, sound & light, foto & video, productie, decoratie en catering — onder één dak.">
-  <meta name="theme-color" content="#050507">
-  <meta name="color-scheme" content="dark">
+  <title>Make It Live — You bring the people. We Make It Live.</title>
+  <meta name="description" content="DJ's, live artists, bands, performers en photo & video voor corporate events, bruiloften en festivals. Make It Live is een Belgisch eventbureau met full event support. You bring the people. We Make It Live.">
+  <meta name="theme-color" content="#f6f2ec">
+  <meta name="color-scheme" content="light dark">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Make It Live — Setting the stage">
-  <meta property="og:description" content="Belgian event agency. The total experience of your event, under one roof.">
+  <meta property="og:title" content="Make It Live — You bring the people. We Make It Live.">
+  <meta property="og:description" content="DJs, live artists, bands, performers and photo & video for corporate events, weddings and festivals. Belgian event agency.">
   <meta property="og:url" content="https://www.makeitlive.agency/">
   <meta property="og:image" content="https://www.makeitlive.agency/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -27,16 +27,19 @@
   <link rel="stylesheet" href="/styles.css">
 
   <script>
-    // Pick the language before first paint so there's no flash of the wrong one.
+    // Pick language + theme before first paint so there's no flash. Light is the default.
     (function () {
-      var lang = 'nl';
+      var lang = 'nl', theme = 'light', root = document.documentElement;
       try {
         var saved = localStorage.getItem('mil-lang');
         if (saved === 'nl' || saved === 'en') lang = saved;
         else if (!/^nl\b/i.test(navigator.language || '')) lang = 'en';
+        if (localStorage.getItem('mil-theme') === 'dark') theme = 'dark';
       } catch (e) {}
-      document.documentElement.lang = lang;
-      document.documentElement.classList.add('js');
+      root.lang = lang;
+      root.dataset.theme = theme;
+      root.classList.add('js');
+      if (/[?&]preview\b/.test(location.search)) root.classList.add('show-drafts');
     })();
   </script>
 </head>
@@ -49,29 +52,40 @@
       <span class="nav-mark-text">MAKE IT LIVE</span><span class="nav-mark-bar"></span>
     </a>
     <nav class="nav-links" aria-label="Main">
-      <a href="#about"><span data-l="nl">Wat we doen</span><span data-l="en">What we do</span></a>
-      <a href="#join"><span data-l="nl">Vacatures</span><span data-l="en">Join us</span></a>
-      <a href="#contact">Contact</a>
+      <a href="#services"><span data-l="nl">Wat we doen</span><span data-l="en">What we do</span></a>
+      <a href="#for"><span data-l="nl">Voor wie</span><span data-l="en">Who for</span></a>
+      <a href="#join"><span data-l="nl">Vacatures</span><span data-l="en">Join the crew</span></a>
     </nav>
+    <a class="nav-cta" href="#contact">Contact</a>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-set-lang="nl">NL</button>
       <span aria-hidden="true">/</span>
       <button type="button" data-set-lang="en">EN</button>
     </div>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
   </header>
 
   <main id="top">
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="hero">
+      <!-- Drop footage in assets/video/hero.mp4 (+ hero.webm) and it fades in by itself. See README. -->
+      <video class="hero-video" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+        <source src="/assets/video/hero.webm" type="video/webm">
+        <source src="/assets/video/hero.mp4" type="video/mp4">
+      </video>
+
       <div class="stage" aria-hidden="true">
+        <div class="aurora"><span class="au1"></span><span class="au2"></span><span class="au3"></span><span class="au4"></span></div>
         <span class="beam b1"></span>
         <span class="beam b2"></span>
         <span class="beam b3"></span>
         <span class="haze"></span>
       </div>
 
-      <h1 class="sr-only">Make It Live</h1>
-      <svg class="logo" viewBox="186 213 1240 342" role="img" aria-label="Make It Live" focusable="false">
+      <svg class="logo" viewBox="193 221 1225 325" role="img" aria-label="Make It Live" focusable="false">
         <defs>
           <clipPath id="make-clip"><rect x="180" y="221" width="800" height="79"/></clipPath>
         </defs>
@@ -95,69 +109,221 @@
         </g>
       </svg>
 
-      <p class="hero-tag">
-        <span data-l="nl">De volledige beleving van je event. <em>Onder één dak.</em></span>
-        <span data-l="en">The total experience of your event. <em>Under one roof.</em></span>
+      <h1 class="hero-title">
+        <span>You bring the people.</span>
+        <span>We <em>Make It Live.</em></span>
+      </h1>
+
+      <p class="hero-lines">
+        <span>DJ's · Live artists · Bands · Performers · Photo &amp; Video</span>
+        <span>Corporate · Weddings · Festivals &amp; much more</span>
       </p>
 
-      <p class="status">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>Setting the stage</span>
-        <span class="status-sep" aria-hidden="true">—</span>
-        <span data-l="nl">nieuwe website binnenkort</span>
-        <span data-l="en">full website coming soon</span>
-      </p>
-
-      <a class="scroll-cue" href="#about" aria-label="Scroll">
-        <span></span>
+      <a class="btn btn-lg" href="#contact">
+        <span data-l="nl">Neem contact op &amp; make it live</span><span data-l="en">Get in touch &amp; make it live</span> <span aria-hidden="true">→</span>
       </a>
+
+      <a class="scroll-cue" href="#services" aria-label="Scroll"><span></span></a>
     </section>
 
-    <!-- MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Entertainment</span><i></i><span>Photo &amp; Video</span><i></i><span>Sound &amp; Light</span><i></i><span>Event Production</span><i></i><span>Event Experience</span><i></i><span>Decoration</span><i></i><span>Catering &amp; Hospitality</span><i></i>
-        <span>Entertainment</span><i></i><span>Photo &amp; Video</span><i></i><span>Sound &amp; Light</span><i></i><span>Event Production</span><i></i><span>Event Experience</span><i></i><span>Decoration</span><i></i><span>Catering &amp; Hospitality</span><i></i>
-      </div>
-    </div>
-
-    <!-- ABOUT -->
-    <section class="section about" id="about">
+    <!-- SERVICES -->
+    <section class="section" id="services">
       <p class="eyebrow reveal"><span class="idx">01</span> <span data-l="nl">Wat we doen</span><span data-l="en">What we do</span></p>
       <h2 class="statement reveal">
-        <span data-l="nl">Eén deur voor <em>alles</em> wat een avond onvergetelijk maakt.</span>
-        <span data-l="en">One door for <em>everything</em> that makes a night unforgettable.</span>
+        <span data-l="nl">Live entertainment die <em>blijft</em> hangen.</span>
+        <span data-l="en">Live entertainment that <em>sticks</em>.</span>
       </h2>
       <p class="lede reveal">
-        <span data-l="nl">Make It Live is een Belgisch eventbureau dat alles onder één dak samenbrengt. Geen tien leveranciers om aan te kloppen — wij nemen het volledige plaatje voor onze rekening, van de eerste beat tot het laatste licht.</span>
-        <span data-l="en">Make It Live is a Belgian event agency that brings it all together under one roof. No knocking on ten different doors — we take care of the full picture, from the first beat to the last light.</span>
+        <span data-l="nl">Daar zijn we in gespecialiseerd: DJ's, live artiesten en content. Eén team, één aanspreekpunt, van het eerste idee tot de laatste track.</span>
+        <span data-l="en">This is what we specialise in: DJs, live artists and content. One team, one point of contact — from the first idea to the last track.</span>
       </p>
 
-      <ul class="disciplines">
-        <li class="reveal"><span class="n">01</span>Entertainment</li>
-        <li class="reveal"><span class="n">02</span><span data-l="nl">Foto &amp; Video</span><span data-l="en">Photo &amp; Video</span></li>
-        <li class="reveal"><span class="n">03</span>Sound &amp; Light</li>
-        <li class="reveal"><span class="n">04</span><span data-l="nl">Eventproductie</span><span data-l="en">Event Production</span></li>
-        <li class="reveal"><span class="n">05</span>Event Experience</li>
-        <li class="reveal"><span class="n">06</span><span data-l="nl">Decoratie</span><span data-l="en">Decoration</span></li>
-        <li class="reveal"><span class="n">07</span>Catering &amp; Hospitality</li>
-        <li class="reveal"><span class="n">08</span><span data-l="nl">Een sterk partnernetwerk</span><span data-l="en">A strong partner network</span></li>
-      </ul>
+      <div class="core">
+        <article class="core-card reveal">
+          <span class="core-n">01</span>
+          <svg class="core-ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="4"/><path d="M24 7a17 17 0 0 1 12 5"/></svg>
+          <div>
+            <h3>DJ's</h3>
+            <p><span data-l="nl">Van warme loungesets tot een volle dansvloer, afgestemd op jouw publiek.</span><span data-l="en">From warm lounge sets to a packed dance floor, tuned to your crowd.</span></p>
+          </div>
+        </article>
+        <article class="core-card reveal">
+          <span class="core-n">02</span>
+          <svg class="core-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M19 34V12l18-4v22"/><circle cx="14" cy="34" r="5"/><circle cx="32" cy="30" r="5"/></svg>
+          <div>
+            <h3>Live musicians</h3>
+            <p><span data-l="nl">Solisten en duo's die je ceremonie, diner of receptie live inkleuren.</span><span data-l="en">Soloists and duos who bring your ceremony, dinner or reception to life.</span></p>
+          </div>
+        </article>
+        <article class="core-card reveal">
+          <span class="core-n">03</span>
+          <svg class="core-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 30v8M18 18v20M26 8v30M34 20v18M42 26v12"/></svg>
+          <div>
+            <h3>Live bands</h3>
+            <p><span data-l="nl">Een volledige band die podium en zaal meeneemt van de eerste noot.</span><span data-l="en">A full band that takes the stage and the room from the first note.</span></p>
+          </div>
+        </article>
+        <article class="core-card reveal">
+          <span class="core-n">04</span>
+          <svg class="core-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l4 14 14 4-14 4-4 14-4-14-14-4 14-4z"/></svg>
+          <div>
+            <h3>Performers</h3>
+            <p><span data-l="nl">Dansers, acts en showelementen die van een moment een herinnering maken.</span><span data-l="en">Dancers, acts and show elements that turn a moment into a memory.</span></p>
+          </div>
+        </article>
+        <article class="core-card reveal">
+          <span class="core-n">05</span>
+          <svg class="core-ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="14" width="36" height="24" rx="4"/><circle cx="24" cy="26" r="7"/><path d="M17 14l2-5h10l2 5"/></svg>
+          <div>
+            <h3>Photo &amp; Video &amp; Content</h3>
+            <p><span data-l="nl">Fotografie, video, reels en aftermovies: content die blijft leven na het event.</span><span data-l="en">Photography, video, reels and aftermovies — content that lives on after the event.</span></p>
+          </div>
+        </article>
+      </div>
+
+      <div class="support reveal">
+        <div>
+          <p class="support-k">Full event support</p>
+          <h3><span data-l="nl">De rest regelen we mee.</span><span data-l="en">We take care of the rest.</span></h3>
+          <p>
+            <span data-l="nl">Via ons netwerk van sterke partners hoef je voor geen enkel onderdeel nog ergens anders aan te kloppen.</span>
+            <span data-l="en">Through our network of strong partners you never have to knock on another door for any part of your event.</span>
+          </p>
+        </div>
+        <ul class="chips">
+          <li><span data-l="nl">Technici</span><span data-l="en">Technicians</span></li>
+          <li>Sound &amp; Light</li>
+          <li><span data-l="nl">Decoratie</span><span data-l="en">Decoration</span></li>
+          <li>Food &amp; Hospitality</li>
+          <li>Catering</li>
+          <li><span data-l="nl">Eventproductie</span><span data-l="en">Event production</span></li>
+          <li>Event experience</li>
+          <li><span data-l="nl">Podium &amp; opbouw</span><span data-l="en">Stage &amp; build-up</span></li>
+          <li><span data-l="nl">… en meer</span><span data-l="en">… and more</span></li>
+        </ul>
+      </div>
     </section>
 
-    <!-- CASES (placeholder) -->
-    <section class="section cases" aria-labelledby="cases-title">
-      <p class="eyebrow reveal" id="cases-title"><span class="idx">02</span> <span data-l="nl">Events &amp; cases</span><span data-l="en">Events &amp; cases</span></p>
-      <div class="ghosts">
-        <div class="ghost reveal"><span class="ghost-n">001</span><span class="ghost-t">Setting the stage</span></div>
-        <div class="ghost reveal"><span class="ghost-n">002</span><span class="ghost-t">Setting the stage</span></div>
-        <div class="ghost reveal"><span class="ghost-n">003</span><span class="ghost-t">Setting the stage</span></div>
+    <!-- WHO FOR -->
+    <section class="section" id="for">
+      <p class="eyebrow reveal"><span class="idx">02</span> <span data-l="nl">Voor wie</span><span data-l="en">Who for</span></p>
+      <h2 class="statement reveal">
+        <span data-l="nl">Jouw event, <em>jouw</em> sfeer.</span>
+        <span data-l="en">Your event, <em>your</em> vibe.</span>
+      </h2>
+      <div class="for">
+        <div class="for-item reveal">
+          <h3>Corporate</h3>
+          <p><span data-l="nl">Recepties, galadiners, teambuildings en lanceringen: professioneel, stipt en op maat.</span><span data-l="en">Receptions, gala dinners, team events and launches — professional, punctual and tailored.</span></p>
+        </div>
+        <div class="for-item reveal">
+          <h3>Weddings</h3>
+          <p><span data-l="nl">Van ceremonie tot dansvloer: de muziek en beleving voor jullie grote dag.</span><span data-l="en">From ceremony to dance floor: the music and atmosphere for your big day.</span></p>
+        </div>
+        <div class="for-item reveal">
+          <h3>Festivals</h3>
+          <p><span data-l="nl">Line-ups, podia en content voor festivals, groot en klein.</span><span data-l="en">Line-ups, stages and content for festivals, big and small.</span></p>
+        </div>
+        <div class="for-item reveal">
+          <h3><span data-l="nl">&amp; veel meer</span><span data-l="en">&amp; much more</span></h3>
+          <p><span data-l="nl">Private parties, openingen, horeca- en clubconcepten. Vraag het gerust.</span><span data-l="en">Private parties, openings, hospitality and club concepts. Just ask.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Draft sections (references, testimonials) are injected here only with ?preview — see partials/drafts.html -->
+    <div id="drafts-slot"></div>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <p class="eyebrow reveal"><span class="idx">03</span> Contact</p>
+      <h2 class="statement reveal">
+        <span data-l="nl">Klaar om het <em>live</em> te maken?</span>
+        <span data-l="en">Ready to make it <em>live</em>?</span>
+      </h2>
+
+      <div class="contact-grid">
+        <form class="form reveal" id="contact-form" action="/api/contact" method="post">
+          <label class="field">
+            <span><span data-l="nl">Naam</span><span data-l="en">Name</span> <i>*</i></span>
+            <input type="text" name="name" autocomplete="name" required maxlength="100">
+          </label>
+          <label class="field">
+            <span>E-mail <i>*</i></span>
+            <input type="email" name="email" autocomplete="email" required maxlength="200">
+          </label>
+          <label class="field">
+            <span><span data-l="nl">Type event</span><span data-l="en">Type of event</span> <i>*</i></span>
+            <select name="type" required>
+              <option value="" disabled selected>—</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Festival">Festival</option>
+              <option value="Private party">Private party</option>
+              <option value="Other">Other / Anders</option>
+            </select>
+          </label>
+          <label class="field">
+            <span><span data-l="nl">Datum (indien gekend)</span><span data-l="en">Date (if known)</span></span>
+            <input type="date" name="date">
+          </label>
+
+          <fieldset class="fieldset">
+            <legend><span data-l="nl">Waar ben je naar op zoek?</span><span data-l="en">What are you looking for?</span></legend>
+            <div class="pills">
+              <label class="pill"><input type="checkbox" name="services" value="DJ"><span>DJ</span></label>
+              <label class="pill"><input type="checkbox" name="services" value="Live musician"><span>Live musicians</span></label>
+              <label class="pill"><input type="checkbox" name="services" value="Live band"><span>Live band</span></label>
+              <label class="pill"><input type="checkbox" name="services" value="Performers"><span>Performers</span></label>
+              <label class="pill"><input type="checkbox" name="services" value="Photo & video"><span>Photo &amp; Video</span></label>
+              <label class="pill"><input type="checkbox" name="services" value="Full event support"><span>Full event support</span></label>
+            </div>
+          </fieldset>
+
+          <label class="field field-wide">
+            <span><span data-l="nl">Vertel ons over je event</span><span data-l="en">Tell us about your event</span></span>
+            <textarea name="message" rows="5" maxlength="3000"></textarea>
+          </label>
+
+          <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+          <div class="form-foot">
+            <button class="btn" type="submit">
+              <span data-l="nl">Verstuur &amp; make it live</span><span data-l="en">Send &amp; make it live</span> <span aria-hidden="true">→</span>
+            </button>
+            <p class="form-note">
+              <span data-l="nl">We antwoorden binnen één werkdag. Je gegevens gebruiken we enkel om je te antwoorden.</span>
+              <span data-l="en">We reply within one working day. We only use your details to answer you.</span>
+            </p>
+          </div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="contact-side reveal">
+          <div>
+            <h3><span data-l="nl">Liever mailen?</span><span data-l="en">Prefer email?</span></h3>
+            <div class="mail">
+              <a class="mail-link" href="mailto:hello@makeitlive.agency">hello@makeitlive.agency</a>
+              <button type="button" class="copy" data-copy="hello@makeitlive.agency">
+                <span class="copy-idle"><span data-l="nl">Kopieer</span><span data-l="en">Copy</span></span>
+                <span class="copy-done"><span data-l="nl">Gekopieerd</span><span data-l="en">Copied</span></span>
+              </button>
+            </div>
+          </div>
+          <div>
+            <h3><span data-l="nl">Wat gebeurt er nu?</span><span data-l="en">What happens next?</span></h3>
+            <p>
+              <span data-l="nl">We lezen je bericht, bellen of mailen je terug en stellen een voorstel op maat samen.</span>
+              <span data-l="en">We read your message, call or email you back, and put together a proposal made for you.</span>
+            </p>
+          </div>
+        </aside>
       </div>
     </section>
 
     <!-- JOIN -->
     <section class="section join" id="join">
-      <p class="eyebrow reveal"><span class="idx">03</span> <span data-l="nl">Open posities</span><span data-l="en">Open positions</span></p>
+      <p class="eyebrow reveal"><span class="idx">04</span> <span data-l="nl">Open posities</span><span data-l="en">Open positions</span></p>
       <h2 class="statement reveal">
         <span data-l="nl">We bouwen het team <em>achter</em> de show.</span>
         <span data-l="en">We're building the crew <em>behind</em> the show.</span>
@@ -293,21 +459,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section contact" id="contact">
-      <p class="eyebrow reveal"><span class="idx">04</span> Contact</p>
-      <h2 class="statement reveal">
-        <span data-l="nl">Klaar om het <em>live</em> te maken?</span>
-        <span data-l="en">Ready to make it <em>live</em>?</span>
-      </h2>
-      <div class="mail reveal">
-        <a class="mail-link" href="mailto:hello@makeitlive.agency">hello@makeitlive.agency</a>
-        <button type="button" class="copy" data-copy="hello@makeitlive.agency">
-          <span class="copy-idle"><span data-l="nl">Kopieer</span><span data-l="en">Copy</span></span>
-          <span class="copy-done"><span data-l="nl">Gekopieerd</span><span data-l="en">Copied</span></span>
-        </button>
-      </div>
-    </section>
   </main>
 
   <footer class="foot">
