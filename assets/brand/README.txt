@@ -6,6 +6,7 @@ Online version: https://makeitlive.agency/brand-kit   |   Questions or other for
 LOGO FILES
   makeitlive-logo-on-dark      white + blue  — use on dark / black backgrounds (primary)
   makeitlive-logo-on-light     black + blue  — use on light backgrounds
+  makeitlive-logo-on-light-gold black + champagne gold — warm version for light backgrounds (used on the website's light mode)
   makeitlive-logo-white        all white     — one-colour print, photos, video overlays
   makeitlive-logo-black        all black     — one-colour print, stamps, fax-era requirements
   makeitlive-icon              square icon   — avatars, favicons, social profile pictures
@@ -23,7 +24,8 @@ COLOUR
   Bronze      #7D5A1F   rgb(125, 90, 31)   (accent for small text and numbers on Linen, 5.6:1)
   Cocoa       #3B2A1E   rgb(59, 42, 30)    (deep brown for warm text or dark surfaces, 12.3:1 on Linen)
   Pastels     Blush #F1D9D1 · Sky #D3E2F8 · Lilac #E0DAF6 · Sage #DBE6D6 · Sand #EFE2C9
-  Blue stays the accent for the logo bar and buttons in both modes.
+  In light mode buttons and accents use Bronze, lines and the logo bar use Champagne.
+  Blue stays the accent in dark mode.
 
 TYPE
   Archivo (expanded width, light to bold) — headlines, UI, labels   fonts.google.com/specimen/Archivo
