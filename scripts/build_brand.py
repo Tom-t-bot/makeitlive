@@ -89,7 +89,8 @@ COLOUR
 
 TYPE
   Archivo (expanded width, light to bold) — headlines, UI, labels   fonts.google.com/specimen/Archivo
-  Instrument Serif Italic — single emphasised words                fonts.google.com/specimen/Instrument+Serif
+  Emphasise one word in a headline with the accent colour (Bronze on light), not with italics.
+  Instrument Serif Italic — sparingly, short supporting lines (quote, price note). Not in headlines.   fonts.google.com/specimen/Instrument+Serif
 
 RULES OF THUMB
   Keep clear space around the logo equal to the height of the letters in "MAKE IT".

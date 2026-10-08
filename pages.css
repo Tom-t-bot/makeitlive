@@ -133,9 +133,8 @@ html.hide-notes .dashed { border-style: solid; border-color: var(--line); color:
 .act-spec h3 { margin: 0 0 4px; font-size: 24px; font-weight: 300; font-stretch: 112%; }
 .act-spec div { display: grid; grid-template-columns: 7.5em 1fr; gap: 10px; align-items: baseline; font-size: 14px; }
 .act-spec b { font-size: 10.5px; font-weight: 600; font-stretch: 125%; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
-.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: s; }
-.step { position: relative; padding: 52px 0 0; }
-.step::before { counter-increment: s; content: "0" counter(s); position: absolute; top: 0; left: 0; font-size: 36px; font-weight: 200; font-stretch: 125%; color: var(--accent); }
+.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.step { position: relative; padding: 0; }
 .step h3 { margin: 0 0 10px; font-size: 20px; font-weight: 400; }
 .cross { display: flex; flex-wrap: wrap; gap: 14px; }
 .cross a { flex: 1 1 220px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: 300; font-stretch: 112%; transition: border-color 0.3s, transform 0.4s var(--ease); }
